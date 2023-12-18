@@ -1,13 +1,26 @@
 <script>
 import { CheckIfIsInstalled } from '../../wailsjs/go/backend/App'
+import { GenerateConfig } from '../../wailsjs/go/backend/App'
+import { TestConnection } from '../../wailsjs/go/backend/App';
+import { useStateStore } from '../stores/stateStore'
+
+
 
 export default {
+    setup() {
+      
+      const stateStore = useStateStore()
+
+      return {
+        isConnected: stateStore.isConnected,
+      }
+    },
     data() {
         return {
-          showInstall: true,
+          showInstall: false,
           providers: [ 
-            { name: "Libvirt", code: "libvirt"},
-            { name: "Virtualbox", code: "vbox"}
+            { name: "Libvirt (Linux)", code: "libvirt"},
+            { name: "Virtualbox (Windows) ", code: "vbox"}
           ],
           selectedProvider: null,
         };
@@ -20,8 +33,17 @@ export default {
     },
 
     methods: {
-      writeConfig() {
+      async writeConfig() {
+
         this.showInstall = false 
+        
+        GenerateConfig(this.selectedProvider.code)
+
+        let err, connected = await TestConnection("/var/run/libvirt/libvirt-sock")
+
+        this.isConnected = connected
+
+        console.log(this.isConnected)
         
       }
     }
@@ -37,6 +59,7 @@ export default {
       <template #header>
         <div class="inline-flex items-center justify-center gap-2">
             <span class="pi pi-star"></span>
+            <p>{{ stateStore.isConnected }}</p>
             <span class="font-bold white-space-nowrap">Setup your host system</span>
         </div>
       </template>

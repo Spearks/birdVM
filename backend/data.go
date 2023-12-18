@@ -9,3 +9,8 @@ type Vm struct {
 	Os string
 	Playbook Playbook
 }
+
+type Config struct {
+	Provider string
+	Vms []Vm
+}

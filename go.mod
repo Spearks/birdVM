@@ -4,7 +4,10 @@ go 1.21
 
 toolchain go1.21.5
 
-require github.com/wailsapp/wails/v2 v2.7.1
+require (
+	github.com/digitalocean/go-libvirt v0.0.0-20221205150000-2939327a8519
+	github.com/wailsapp/wails/v2 v2.7.1
+)
 
 require (
 	github.com/bep/debounce v1.2.1 // indirect

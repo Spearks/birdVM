@@ -6,6 +6,10 @@ export function CheckIfIsInstalled() {
   return window['go']['backend']['App']['CheckIfIsInstalled']();
 }
 
-export function Test(arg1) {
-  return window['go']['backend']['App']['Test'](arg1);
+export function GenerateConfig(arg1) {
+  return window['go']['backend']['App']['GenerateConfig'](arg1);
+}
+
+export function TestConnection(arg1) {
+  return window['go']['backend']['App']['TestConnection'](arg1);
 }
