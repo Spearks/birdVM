@@ -6,7 +6,7 @@
     <div class="flex">
       <div class="flex-none w-24 h-24 bg-surface-600">
         <img
-          src="/home/ace/Downloads/ubuntu-logo.png"
+          src=""
           alt="VM"
           class="object-cover w-full h-full"
           width="96"
