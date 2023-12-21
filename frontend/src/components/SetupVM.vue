@@ -4,7 +4,6 @@ import { GenerateConfig } from '../../wailsjs/go/backend/App'
 import { TestConnection } from '../../wailsjs/go/backend/App';
 import { useStateStore } from '../stores/stateStore'
 
-
 const stateStore = useStateStore()
 
 export default {
@@ -23,15 +22,13 @@ export default {
           libvirtPath: "/var/run/libvirt/libvirt-sock"
         };
     },
-    async created() {
-      const result = await CheckIfIsInstalled()
+    created() {
 
-      this.showInstall = !result
-      if (result == true) {
-        const connected = await TestConnection(this.libvirtPath)
-        stateStore.isConnected = connected
-      }
-  },
+        CheckIfIsInstalled().then(result => {
+          this.showInstall = !result
+          
+        })
+    },
 
     methods: {
       async writeConfig() {

@@ -66,7 +66,7 @@ export default {
             'mr-2',
 
             // Color
-            'text-surface-600 dark:text-white/70'
+            'c dark:text-white/70'
         ]
     },
     label: {

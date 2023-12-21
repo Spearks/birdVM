@@ -6,4 +6,6 @@ export function CheckIfIsInstalled():Promise<boolean>;
 
 export function GenerateConfig(arg1:string):Promise<backend.Config>;
 
+export function GetAllVmsStats():Promise<Array<backend.Vm>>;
+
 export function TestConnection(arg1:string):Promise<boolean>;

@@ -10,6 +10,10 @@ export function GenerateConfig(arg1) {
   return window['go']['backend']['App']['GenerateConfig'](arg1);
 }
 
+export function GetAllVmsStats() {
+  return window['go']['backend']['App']['GetAllVmsStats']();
+}
+
 export function TestConnection(arg1) {
   return window['go']['backend']['App']['TestConnection'](arg1);
 }

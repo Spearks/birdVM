@@ -1,15 +1,27 @@
 <template>
-    <div>
-        <h1>Home</h1>
+    <div class="card w-full rounded-lg">
         <SetupUi></SetupUi>
+        <div class="grid grid-rows-1 grid-cols-1 gap-4">
+          
+          <VmCard></VmCard>
+
+        </div>
     </div>
 </template>
 
 <script>
+import { useStateStore } from '../stores/stateStore'
+import SetupUi from '../components/SetupUi.vue'
+import VmCard from '../components/VmCard.vue'
 
-import SetupUi from '../components/SetupUi.vue';
+const stateStore = useStateStore()
 
 export default {
-    components: { SetupUi }
+    setup() {
+      return {
+        isConnected: stateStore.isConnected,
+      }
+    },
+    components: { SetupUi, VmCard }
 }
 </script>
